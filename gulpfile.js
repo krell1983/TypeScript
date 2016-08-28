@@ -6,11 +6,7 @@ var gulp_rename      = require('gulp-rename');     // add min at end
 var gulp_concat      = require('gulp-concat');     // lonczenie plików
 var gulp_sass        = require('gulp-sass');       // Sass
 var gulp_cssmin      = require('gulp-cssmin');     // css-min
-
-var gulp_react       = require('gulp-react');      // JSX
-var gulp_babel       = require('gulp-babel');      // ES-2015
 var gulp_typescript  = require('gulp-typescript'); // typescript
-
 
 
 gulp.task('typescript', function() {
@@ -19,8 +15,8 @@ gulp.task('typescript', function() {
              noImplicitAny: true,
              out: 'output.js'
          }))
-        .pipe(gulp_concat('typescript.js')) // for testing
-        .pipe(gulp.dest('project/scripts'))
+        .pipe(gulp_concat('scripts.js'))
+        .pipe(gulp.dest('project/scripts')) // for testing
         .pipe(gulp_uglify())
         .pipe(gulp_rename({suffix: '.min'}))
         .pipe(gulp.dest('project/scripts'));
