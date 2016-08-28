@@ -1,0 +1,17 @@
+{
+  "name": "babel",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "krell1983"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
