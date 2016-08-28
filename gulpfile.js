@@ -9,6 +9,11 @@ var gulp_cssmin      = require('gulp-cssmin');     // css-min
 var gulp_typescript  = require('gulp-typescript'); // typescript
 
 
+
+gulp.task('Test', function(){
+  console.log('Gulp Works');
+});
+
 gulp.task('typescript', function() {
   gulp.src(['sorce/typescript/*.ts'])
         .pipe(gulp_typescript({
@@ -22,13 +27,25 @@ gulp.task('typescript', function() {
         .pipe(gulp.dest('project/scripts'));
 });
 
-
 gulp.task('watch_typescript', function(){
 gulp.watch(['sorce/typescript/*.ts'],['typescript']);
 });
 
-gulp.task('Test', function(){
-  console.log('Gulp Works');
+
+
+gulp.task('scss', function() {
+    gulp.src('sorce/scss/style.scss')
+        .pipe(gulp_sass().on('error', gulp_sass.logError))
+        .pipe(gulp.dest('project/css'))
+        .pipe(gulp_cssmin())
+        .pipe(gulp_rename({suffix: '.min'}))
+        .pipe(gulp.dest('project/css'));
 });
 
-gulp.task('default', ['watch_typescript']);
+gulp.task('watch_scss', function(){
+gulp.watch(['sorce/scss/*.scss'],['scss']);
+});
+
+
+
+gulp.task('default', ['watch_typescript','watch_scss']);
